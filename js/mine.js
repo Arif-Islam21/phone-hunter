@@ -34,12 +34,20 @@ const handleShowDetail = async (id) => {
     `https://openapi.programming-hero.com/api/phone/${id}`
   );
   const data = await res.json();
-  console.log(data);
-  showPhoneDetails(data);
+  // console.log(data);
+  const phone = data.data;
+  showPhoneDetails(phone);
 };
 const showPhoneDetails = (phone) => {
   // show the modal
+  console.log(phone);
   showDetailModal.showModal(phone);
+  const phoneName = document.getElementById("phone-name");
+  phoneName.innerText = phone.name;
+  const phoneContainer = document.getElementById("modal-section-detail");
+  phoneContainer.innerHTML = `
+    <img src="${phone.image}" alt="" />
+  `;
 };
 
 const displayPhones = (phones = 13, isShowAll) => {
