@@ -1,25 +1,34 @@
-const loadPhone = async (phoneText) => {
+const loadPhone = async (phoneText, isShowAll) => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${phoneText}`
   );
   const data = await response.json();
   const phoneData = data.data;
 
-  displayPhones(phoneData);
+  displayPhones(phoneData, isShowAll);
+};
+
+const toggleLoadingSpinner = (isLoading) => {
+  const loadingSpinnerElement = document.getElementById("loading-spinner");
+  if (isLoading) {
+    loadingSpinnerElement.classList.remove("hidden");
+  } else {
+    loadingSpinnerElement.classList.add("hidden");
+  }
 };
 
 const inputElement = document.getElementById("search-field");
 
-document.getElementById("search-btn").addEventListener("click", function () {
+function handlePhoneShow(isShowAll) {
   toggleLoadingSpinner(true);
   const inputText = inputElement.value;
-  loadPhone(inputText);
+  loadPhone(inputText, isShowAll);
   //   console.log(inputText);
-});
+}
 
-const displayPhones = (phones) => {
+const displayPhones = (phones, isShowAll) => {
   const showAllBtn = document.getElementById("showAllContainer");
-  if (phones.length > 12) {
+  if (phones.length > 12 && !isShowAll) {
     showAllBtn.classList.remove("hidden");
     showAllBtn.classList.add("block");
   } else {
@@ -29,8 +38,10 @@ const displayPhones = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent = "";
 
-  //   more then 12
-  phones = phones.slice(0, 12);
+  //   more then 12 if not show all
+  if (!isShowAll) {
+    phones = phones.slice(0, 12);
+  }
 
   for (const phone of phones) {
     const div = document.createElement("div");
@@ -54,11 +65,7 @@ const displayPhones = (phones) => {
   toggleLoadingSpinner(false);
 };
 
-const toggleLoadingSpinner = (isLoading) => {
-  const loadingSpinnerElement = document.getElementById("loading-spinner");
-  if (isLoading) {
-    loadingSpinnerElement.classList.remove("hidden");
-  } else {
-    loadingSpinnerElement.classList.add("hidden");
-  }
+// handle show all
+const handleShowAll = () => {
+  handlePhoneShow(true);
 };
