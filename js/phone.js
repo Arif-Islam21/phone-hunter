@@ -12,14 +12,18 @@ const displayPhone = (phones) => {
   //   console.log(phones);
 
   const phoneContainer = document.getElementById("phone-container");
+
+  // conditions
+  const ShowMoreContainer = document.getElementById("showAllContainer");
+  console.log(ShowMoreContainer);
+  if (phones.length > 12) {
+    ShowMoreContainer.classList.remove("hidden");
+  } else {
+    ShowMoreContainer.classList.add("hidden");
+  }
   // clear the container before calling phones
   phoneContainer.textContent = "";
 
-  // conditions
-  const showAllContainer = document.getElementById("show-all-container");
-  if (phones.length > 12) {
-    showAllContainer.classList.remove("hidden");
-  }
   // display only frist 12
   phones = phones.slice(0, 12);
 
@@ -52,5 +56,5 @@ const handleSearch = () => {
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
   loadPhone(searchText);
-  console.log(searchText);
+  // console.log(searchText);
 };

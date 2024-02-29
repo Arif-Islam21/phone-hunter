@@ -19,7 +19,7 @@
     <main class="container">
       <section>
         <input id="search-field" type="text" placeholder="Search" class="input input-bordered w-full bg-gray-100 my-4 p-4 rounded-md mx-4 max-w-xs" />
-        <button onclick="handleSearch()" class="btn btn-accent bg-gray-100 my-4 p-4 rounded-md mr-3">Search</button>
+        <button id="search-btn"  class="btn btn-accent bg-gray-100 my-4 p-4 rounded-md mr-3">Search</button>
       </section>
 
       <!-- search section -->
@@ -29,16 +29,18 @@
           id="phone-container"
         >
         <!-- show all button -->
-        <div class="hidden" id="show-all-container">
-          <button onclick="handleSearch()" class="btn  btn-accent ">Show All</button>
+        <div id="showAllContainer" class="hidden">
+          <button  class="btn  btn-accent ">Show All</button>
         </div>
           <!-- <div class="card bg-gray-100 shadow-xl"></div>
         </div> -->
       </section>
     </main>
     <footer></footer>
+    <!-- onclick="handleSearch()"
+onclick="handleSearch()" -->
 
     <!-- scripts -->
-    <script src="js/phone.js"></script>
+    <script src="js/mine.js"></script>
   </body>
 </html>
