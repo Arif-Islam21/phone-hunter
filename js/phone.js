@@ -12,6 +12,8 @@ const displayPhone = (phones) => {
   //   console.log(phones);
 
   const phoneContainer = document.getElementById("phone-container");
+  // clear the container before calling phones
+  phoneContainer.textContent = "";
 
   phones.forEach((phone) => {
     // console.log(phone);
