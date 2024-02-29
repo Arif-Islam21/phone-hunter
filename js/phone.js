@@ -15,8 +15,15 @@ const displayPhone = (phones) => {
   // clear the container before calling phones
   phoneContainer.textContent = "";
 
+  // conditions
+  const showAllContainer = document.getElementById("show-all-container");
+  if (phones.length > 12) {
+    showAllContainer.classList.remove("hidden");
+  }
+  // display only frist 12
+  phones = phones.slice(0, 12);
+
   phones.forEach((phone) => {
-    // console.log(phone);
     // create phone container div
     const phoneCard = document.createElement("div");
     phoneCard.classList =
@@ -47,5 +54,3 @@ const handleSearch = () => {
   loadPhone(searchText);
   console.log(searchText);
 };
-
-// loadPhone();
