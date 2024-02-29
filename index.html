@@ -16,10 +16,20 @@
     <header>
       <h2 class="text-6xl">Hunting Phone</h2>
     </header>
-    <main class="container">
+    <main class="container mx-auto">
       <section>
-        <input id="search-field" type="text" placeholder="Search" class="input input-bordered w-full bg-gray-100 my-4 p-4 rounded-md mx-4 max-w-xs" />
-        <button id="search-btn"  class="btn btn-accent bg-gray-100 my-4 p-4 rounded-md mr-3">Search</button>
+        <input
+          id="search-field"
+          type="text"
+          placeholder="Search"
+          class="input input-bordered w-full bg-gray-100 my-4 p-4 rounded-md mx-4 max-w-xs"
+        />
+        <button
+          id="search-btn"
+          class="btn btn-accent bg-gray-100 my-4 p-4 rounded-md mr-3"
+        >
+          Search
+        </button>
       </section>
 
       <!-- search section -->
@@ -27,12 +37,12 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           id="phone-container"
-        >
+        ></div>
         <!-- show all button -->
-        <div id="showAllContainer" class="hidden">
-          <button  class="btn  btn-accent ">Show All</button>
+        <div id="showAllContainer" class="hidden mx-auto">
+          <button class="btn btn-accent">Show All</button>
         </div>
-          <!-- <div class="card bg-gray-100 shadow-xl"></div>
+        <!-- <div class="card bg-gray-100 shadow-xl"></div>
         </div> -->
       </section>
     </main>
