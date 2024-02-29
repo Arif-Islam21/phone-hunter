@@ -26,7 +26,23 @@ function handlePhoneShow(isShowAll) {
   //   console.log(inputText);
 }
 
-const displayPhones = (phones, isShowAll) => {
+// show detail on click
+const handleShowDetail = async (id) => {
+  console.log("showing details", id);
+  // load data
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/phone/${id}`
+  );
+  const data = await res.json();
+  console.log(data);
+  showPhoneDetails(data);
+};
+const showPhoneDetails = (phone) => {
+  // show the modal
+  showDetailModal.showModal(phone);
+};
+
+const displayPhones = (phones = 13, isShowAll) => {
   const showAllBtn = document.getElementById("showAllContainer");
   if (phones.length > 12 && !isShowAll) {
     showAllBtn.classList.remove("hidden");
@@ -48,11 +64,11 @@ const displayPhones = (phones, isShowAll) => {
     div.innerHTML = `
   <div class="card  bg-gray-100 my-4 gap-4 py-4 shadow-xl">
   <figure><img src=${phone.image} alt="Shoes" /></figure>
-  <div class="card-body">
+  <div class="card-body text-center items-center">
     <h2 class="card-title">${phone.phone_name}</h2>
     <p>${phone.slug}</p>
     <div class="card-actions justify-center">
-      <button class="btn btn-primary">Buy Now</button>
+      <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary" on>Show Details</button>
     </div>
   </div>
 </div>
@@ -69,3 +85,5 @@ const displayPhones = (phones, isShowAll) => {
 const handleShowAll = () => {
   handlePhoneShow(true);
 };
+
+loadPhone();
