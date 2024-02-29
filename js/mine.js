@@ -11,6 +11,7 @@ const loadPhone = async (phoneText) => {
 const inputElement = document.getElementById("search-field");
 
 document.getElementById("search-btn").addEventListener("click", function () {
+  toggleLoadingSpinner(true);
   const inputText = inputElement.value;
   loadPhone(inputText);
   //   console.log(inputText);
@@ -46,5 +47,18 @@ const displayPhones = (phones) => {
 </div>
   `;
     phoneContainer.appendChild(div);
+  }
+
+  //   hide loading spinner
+
+  toggleLoadingSpinner(false);
+};
+
+const toggleLoadingSpinner = (isLoading) => {
+  const loadingSpinnerElement = document.getElementById("loading-spinner");
+  if (isLoading) {
+    loadingSpinnerElement.classList.remove("hidden");
+  } else {
+    loadingSpinnerElement.classList.add("hidden");
   }
 };
