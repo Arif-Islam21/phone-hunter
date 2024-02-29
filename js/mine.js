@@ -17,18 +17,19 @@ document.getElementById("search-btn").addEventListener("click", function () {
 });
 
 const displayPhones = (phones) => {
+  const showAllBtn = document.getElementById("showAllContainer");
   if (phones.length > 12) {
-    const showAllBtn = document.getElementById("showAllContainer");
     showAllBtn.classList.remove("hidden");
     showAllBtn.classList.add("block");
-    console.log(showAllBtn);
+  } else {
+    showAllBtn.classList.add("hidden");
   }
 
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent = "";
 
   //   more then 12
-  phones = phones.slice(0, 5);
+  phones = phones.slice(0, 12);
 
   for (const phone of phones) {
     const div = document.createElement("div");
